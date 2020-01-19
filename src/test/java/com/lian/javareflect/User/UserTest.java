@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @SpringBootTest(classes = JavareflectApplication.class)
@@ -35,6 +37,7 @@ public class UserTest {
         user.setRealName("古天乐");
         userService.add(user);
     }
+
     @Test
     public void addUser2() throws ClassNotFoundException, NoSuchFieldException {
         User user = new User();
@@ -66,6 +69,38 @@ public class UserTest {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * 通过JDK的反射，获取类的所有信息
+     * @param clz   类的Class对象。类的模板
+     * @return
+     */
+    private Map<String,List<String>> getMethodInfo(Class<?> clz){
+        Map<String, List<String>> classInfo = new HashMap<>();
+        Method[] methods = clz.getDeclaredMethods();
+        for(int i=0;i<methods.length;i++){
+            ArrayList<String> methodInfo = new ArrayList<>();
+            if(methods[i]!=null){
+                methodInfo.add("methodName:"+methods[i].getName());
+                methodInfo.add("method modifier:"+ Modifier.toString(methods[i].getModifiers()));
+                Parameter[] parameters = methods[i].getParameters();
+                for (int j=0;j<parameters.length;j++){
+                    methodInfo.add(parameters[j].getName()+":"+parameters[j].getType());
+                }
+                methodInfo.add("return type:"+methods[i].getReturnType());
+                classInfo.put("method"+(i+1),methodInfo);
+            }
+        }
+        return classInfo;
+    }
+
+    public static void main(String[] args) {
+        UserTest userTest = new UserTest();
+        Map<String, List<String>> methodInfo = userTest.getMethodInfo(UserService.class);
+        methodInfo.forEach((key,value)->{
+            System.out.println(key+"---->"+value);
+        });
     }
 
 }
