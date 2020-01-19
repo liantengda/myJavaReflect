@@ -32,7 +32,9 @@ public class UserMapperImpl implements UserMapper {
     @Override
     public int jdbcAdd(User user,JdbcTemplate jdbcTemplate) {
         System.out.println("我找到jdbc底层了---->");
-        System.out.println("数据源信息--->"+jdbcTemplate.getDataSource());
+        if(jdbcTemplate!=null){
+            System.out.println("数据源信息--->"+jdbcTemplate.getDataSource());
+        }
         String sql = "insert into user (userName,passWord,realName) values (?,?,?);";
 
         jdbcTemplate.update(new PreparedStatementCreator() {
