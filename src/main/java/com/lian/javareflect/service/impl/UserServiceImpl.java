@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @TestAnnotation(name = "hehe",value = "hehe")
-    public int jdbcAdd(User user, JdbcTemplate jdbcTemplate) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    public int addUserByJdbc(User user, JdbcTemplate jdbcTemplate) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
         System.out.println("我找到这个方法了----->");
         Class<?> aClass = Class.forName("com.lian.javareflect.mapper.impl.UserMapperImpl");
         Method jdbcAdd = aClass.getDeclaredMethod("jdbcAdd", User.class,JdbcTemplate.class);
