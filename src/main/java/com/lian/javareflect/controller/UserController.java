@@ -37,4 +37,9 @@ public class UserController {
     public User delUser(@PathVariable int id){
         return userService.sel(id);
     }
+
+    @RequestMapping(value = "user/list",method = RequestMethod.GET)
+    public Object listUser(){
+        return userService.findUserList();
+    }
 }

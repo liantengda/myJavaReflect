@@ -13,6 +13,10 @@
         select * from user where id = #{id}
     </select>
 
+    <select id="list" resultType="com.lian.javareflect.model.User">
+        select * from user
+    </select>
+
     <insert id="add" parameterType="com.lian.javareflect.model.User">
         insert into user (userName,passWord,realName) values (#{userName},#{passWord},#{realName})
     </insert>

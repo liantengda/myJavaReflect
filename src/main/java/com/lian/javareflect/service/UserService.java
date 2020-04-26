@@ -4,6 +4,7 @@ import com.lian.javareflect.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 /**
  *
@@ -16,6 +17,12 @@ public interface UserService {
     * @return
     */
    User sel(int id);
+
+   /**
+    * 查询用户列表
+    * @return
+    */
+   List<User> findUserList();
 
    /**
     * 添加用户信息

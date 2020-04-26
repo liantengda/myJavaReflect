@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -59,5 +60,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User del(int id) {
         return userMapper.del(id);
+    }
+
+    @Override
+    public List<User> findUserList() {
+        List<User> list = userMapper.list();
+        return list;
     }
 }

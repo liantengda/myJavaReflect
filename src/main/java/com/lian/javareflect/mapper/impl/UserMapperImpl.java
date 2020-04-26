@@ -2,7 +2,6 @@ package com.lian.javareflect.mapper.impl;
 
 import com.lian.javareflect.mapper.UserMapper;
 import com.lian.javareflect.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Component;
@@ -11,6 +10,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 手写jdbc层
@@ -60,5 +60,8 @@ public class UserMapperImpl implements UserMapper {
         return null;
     }
 
-
+    @Override
+    public List<User> list() {
+        return null;
+    }
 }
