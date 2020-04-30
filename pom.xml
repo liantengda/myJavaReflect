@@ -118,7 +118,12 @@
             <artifactId>org.apache.poi.xwpf.converter.xhtml</artifactId>
             <version>1.0.5</version>
         </dependency>
-
+        <!--lombok依赖，解决实体类代码整洁问题-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--doc  操作word文档doc的依赖包-->
 
         <dependency>
