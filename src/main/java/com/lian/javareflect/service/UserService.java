@@ -1,5 +1,6 @@
 package com.lian.javareflect.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lian.javareflect.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  *
  */
-public interface UserService {
+public interface UserService extends IService<User> {
    /**
     * 查询用户信息
     *

@@ -1,9 +1,9 @@
 package com.lian.javareflect.service.impl;
 
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lian.javareflect.annotion.TestAnnotation;
 import com.lian.javareflect.mapper.UserMapper;
-import com.lian.javareflect.mapper.impl.UserMapperImpl;
 import com.lian.javareflect.model.User;
 import com.lian.javareflect.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements UserService {
 
     @Autowired
     UserMapper userMapper;
@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
         System.out.println("我找到这个方法了----->");
         Class<?> aClass = Class.forName("com.lian.javareflect.mapper.impl.UserMapperImpl");
         Method jdbcAdd = aClass.getDeclaredMethod("jdbcAdd", User.class,JdbcTemplate.class);
-        UserMapperImpl userMapper = (UserMapperImpl)aClass.newInstance();
         jdbcAdd.invoke(userMapper,user,jdbcTemplate);
         return 0;
     }
