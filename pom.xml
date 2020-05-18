@@ -148,6 +148,12 @@
             <artifactId>poi-scratchpad</artifactId>
             <version>3.12</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.56</version>
+        </dependency>
 
         <!--springboot集成的测试类-->
         <dependency>
